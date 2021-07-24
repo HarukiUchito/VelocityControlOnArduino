@@ -13,12 +13,15 @@ class SpeedController {
             double gainP, double gainI, double gainD);
 
         void setMotorDuty(double duty);
+        void controlVelocity();
+
         void setVelocity(double velocity);
 
         double get_rps() const { return mRPS; };
+        double get_velocity() const { return currentVelocity_; };
     private:
         double mP, mI, mD; // PID gain
-        double mIntegralSum, mRPS;
+        double mIntegralSum, mRPS, targetVelocity_, currentVelocity_;
         MotorDriver* mMD;
         Encoder* mEncoder;
 };
